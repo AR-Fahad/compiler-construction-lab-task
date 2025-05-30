@@ -1,0 +1,83 @@
+
+bmi.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_main>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 e4 f0             	and    esp,0xfffffff0
+   6:	83 ec 20             	sub    esp,0x20
+   9:	e8 00 00 00 00       	call   e <_main+0xe>
+   e:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+  15:	e8 00 00 00 00       	call   1a <_main+0x1a>
+  1a:	8d 44 24 18          	lea    eax,[esp+0x18]
+  1e:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  22:	c7 04 24 1c 00 00 00 	mov    DWORD PTR [esp],0x1c
+  29:	e8 00 00 00 00       	call   2e <_main+0x2e>
+  2e:	c7 04 24 1f 00 00 00 	mov    DWORD PTR [esp],0x1f
+  35:	e8 00 00 00 00       	call   3a <_main+0x3a>
+  3a:	8d 44 24 14          	lea    eax,[esp+0x14]
+  3e:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  42:	c7 04 24 1c 00 00 00 	mov    DWORD PTR [esp],0x1c
+  49:	e8 00 00 00 00       	call   4e <_main+0x4e>
+  4e:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
+  52:	d9 44 24 14          	fld    DWORD PTR [esp+0x14]
+  56:	d9 44 24 14          	fld    DWORD PTR [esp+0x14]
+  5a:	de c9                	fmulp  st(1),st
+  5c:	de f9                	fdivrp st(1),st
+  5e:	d9 5c 24 1c          	fstp   DWORD PTR [esp+0x1c]
+  62:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  66:	dd 5c 24 04          	fstp   QWORD PTR [esp+0x4]
+  6a:	c7 04 24 38 00 00 00 	mov    DWORD PTR [esp],0x38
+  71:	e8 00 00 00 00       	call   76 <_main+0x76>
+  76:	d9 05 a0 00 00 00    	fld    DWORD PTR ds:0xa0
+  7c:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  80:	d9 c9                	fxch   st(1)
+  82:	da e9                	fucompp 
+  84:	df e0                	fnstsw ax
+  86:	9e                   	sahf   
+  87:	76 0e                	jbe    97 <_main+0x97>
+  89:	c7 04 24 4b 00 00 00 	mov    DWORD PTR [esp],0x4b
+  90:	e8 00 00 00 00       	call   95 <_main+0x95>
+  95:	eb 70                	jmp    107 <_main+0x107>
+  97:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  9b:	d9 05 a0 00 00 00    	fld    DWORD PTR ds:0xa0
+  a1:	d9 c9                	fxch   st(1)
+  a3:	da e9                	fucompp 
+  a5:	df e0                	fnstsw ax
+  a7:	9e                   	sahf   
+  a8:	72 1f                	jb     c9 <_main+0xc9>
+  aa:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  ae:	dd 05 a8 00 00 00    	fld    QWORD PTR ds:0xa8
+  b4:	da e9                	fucompp 
+  b6:	df e0                	fnstsw ax
+  b8:	9e                   	sahf   
+  b9:	76 0e                	jbe    c9 <_main+0xc9>
+  bb:	c7 04 24 61 00 00 00 	mov    DWORD PTR [esp],0x61
+  c2:	e8 00 00 00 00       	call   c7 <_main+0xc7>
+  c7:	eb 3e                	jmp    107 <_main+0x107>
+  c9:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  cd:	d9 05 b0 00 00 00    	fld    DWORD PTR ds:0xb0
+  d3:	d9 c9                	fxch   st(1)
+  d5:	da e9                	fucompp 
+  d7:	df e0                	fnstsw ax
+  d9:	9e                   	sahf   
+  da:	72 1f                	jb     fb <_main+0xfb>
+  dc:	d9 44 24 1c          	fld    DWORD PTR [esp+0x1c]
+  e0:	dd 05 b8 00 00 00    	fld    QWORD PTR ds:0xb8
+  e6:	da e9                	fucompp 
+  e8:	df e0                	fnstsw ax
+  ea:	9e                   	sahf   
+  eb:	76 0e                	jbe    fb <_main+0xfb>
+  ed:	c7 04 24 79 00 00 00 	mov    DWORD PTR [esp],0x79
+  f4:	e8 00 00 00 00       	call   f9 <_main+0xf9>
+  f9:	eb 0c                	jmp    107 <_main+0x107>
+  fb:	c7 04 24 8e 00 00 00 	mov    DWORD PTR [esp],0x8e
+ 102:	e8 00 00 00 00       	call   107 <_main+0x107>
+ 107:	b8 00 00 00 00       	mov    eax,0x0
+ 10c:	c9                   	leave  
+ 10d:	c3                   	ret    
+ 10e:	90                   	nop
+ 10f:	90                   	nop

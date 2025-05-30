@@ -1,0 +1,65 @@
+
+leap.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_main>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 e4 f0             	and    esp,0xfffffff0
+   6:	83 ec 20             	sub    esp,0x20
+   9:	e8 00 00 00 00       	call   e <_main+0xe>
+   e:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+  15:	e8 00 00 00 00       	call   1a <_main+0x1a>
+  1a:	8d 44 24 1c          	lea    eax,[esp+0x1c]
+  1e:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  22:	c7 04 24 0f 00 00 00 	mov    DWORD PTR [esp],0xf
+  29:	e8 00 00 00 00       	call   2e <_main+0x2e>
+  2e:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
+  32:	83 e0 03             	and    eax,0x3
+  35:	85 c0                	test   eax,eax
+  37:	75 24                	jne    5d <_main+0x5d>
+  39:	8b 4c 24 1c          	mov    ecx,DWORD PTR [esp+0x1c]
+  3d:	ba 1f 85 eb 51       	mov    edx,0x51eb851f
+  42:	89 c8                	mov    eax,ecx
+  44:	f7 ea                	imul   edx
+  46:	c1 fa 05             	sar    edx,0x5
+  49:	89 c8                	mov    eax,ecx
+  4b:	c1 f8 1f             	sar    eax,0x1f
+  4e:	29 c2                	sub    edx,eax
+  50:	89 d0                	mov    eax,edx
+  52:	6b c0 64             	imul   eax,eax,0x64
+  55:	29 c1                	sub    ecx,eax
+  57:	89 c8                	mov    eax,ecx
+  59:	85 c0                	test   eax,eax
+  5b:	75 27                	jne    84 <_main+0x84>
+  5d:	8b 4c 24 1c          	mov    ecx,DWORD PTR [esp+0x1c]
+  61:	ba 1f 85 eb 51       	mov    edx,0x51eb851f
+  66:	89 c8                	mov    eax,ecx
+  68:	f7 ea                	imul   edx
+  6a:	c1 fa 07             	sar    edx,0x7
+  6d:	89 c8                	mov    eax,ecx
+  6f:	c1 f8 1f             	sar    eax,0x1f
+  72:	29 c2                	sub    edx,eax
+  74:	89 d0                	mov    eax,edx
+  76:	69 c0 90 01 00 00    	imul   eax,eax,0x190
+  7c:	29 c1                	sub    ecx,eax
+  7e:	89 c8                	mov    eax,ecx
+  80:	85 c0                	test   eax,eax
+  82:	75 16                	jne    9a <_main+0x9a>
+  84:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
+  88:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  8c:	c7 04 24 12 00 00 00 	mov    DWORD PTR [esp],0x12
+  93:	e8 00 00 00 00       	call   98 <_main+0x98>
+  98:	eb 14                	jmp    ae <_main+0xae>
+  9a:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
+  9e:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  a2:	c7 04 24 26 00 00 00 	mov    DWORD PTR [esp],0x26
+  a9:	e8 00 00 00 00       	call   ae <_main+0xae>
+  ae:	b8 00 00 00 00       	mov    eax,0x0
+  b3:	c9                   	leave  
+  b4:	c3                   	ret    
+  b5:	90                   	nop
+  b6:	90                   	nop
+  b7:	90                   	nop

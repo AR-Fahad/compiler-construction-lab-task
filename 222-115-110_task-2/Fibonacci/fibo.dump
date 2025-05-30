@@ -1,0 +1,48 @@
+
+fibo.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_main>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 e4 f0             	and    esp,0xfffffff0
+   6:	83 ec 30             	sub    esp,0x30
+   9:	e8 00 00 00 00       	call   e <_main+0xe>
+   e:	c7 44 24 2c 00 00 00 	mov    DWORD PTR [esp+0x2c],0x0
+  15:	00 
+  16:	c7 44 24 28 01 00 00 	mov    DWORD PTR [esp+0x28],0x1
+  1d:	00 
+  1e:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+  25:	e8 00 00 00 00       	call   2a <_main+0x2a>
+  2a:	8d 44 24 1c          	lea    eax,[esp+0x1c]
+  2e:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  32:	c7 04 24 1c 00 00 00 	mov    DWORD PTR [esp],0x1c
+  39:	e8 00 00 00 00       	call   3e <_main+0x3e>
+  3e:	c7 04 24 1f 00 00 00 	mov    DWORD PTR [esp],0x1f
+  45:	e8 00 00 00 00       	call   4a <_main+0x4a>
+  4a:	c7 44 24 24 01 00 00 	mov    DWORD PTR [esp+0x24],0x1
+  51:	00 
+  52:	eb 37                	jmp    8b <_main+0x8b>
+  54:	8b 44 24 2c          	mov    eax,DWORD PTR [esp+0x2c]
+  58:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  5c:	c7 04 24 32 00 00 00 	mov    DWORD PTR [esp],0x32
+  63:	e8 00 00 00 00       	call   68 <_main+0x68>
+  68:	8b 54 24 2c          	mov    edx,DWORD PTR [esp+0x2c]
+  6c:	8b 44 24 28          	mov    eax,DWORD PTR [esp+0x28]
+  70:	01 d0                	add    eax,edx
+  72:	89 44 24 20          	mov    DWORD PTR [esp+0x20],eax
+  76:	8b 44 24 28          	mov    eax,DWORD PTR [esp+0x28]
+  7a:	89 44 24 2c          	mov    DWORD PTR [esp+0x2c],eax
+  7e:	8b 44 24 20          	mov    eax,DWORD PTR [esp+0x20]
+  82:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
+  86:	83 44 24 24 01       	add    DWORD PTR [esp+0x24],0x1
+  8b:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
+  8f:	39 44 24 24          	cmp    DWORD PTR [esp+0x24],eax
+  93:	7e bf                	jle    54 <_main+0x54>
+  95:	c7 04 24 0a 00 00 00 	mov    DWORD PTR [esp],0xa
+  9c:	e8 00 00 00 00       	call   a1 <_main+0xa1>
+  a1:	b8 00 00 00 00       	mov    eax,0x0
+  a6:	c9                   	leave  
+  a7:	c3                   	ret    
