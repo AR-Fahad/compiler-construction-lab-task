@@ -1,35 +1,26 @@
 %option noyywrap
 
 %{
-    #include "cal2.tab.h"
+#include "cal2.tab.h"
 %}
 
 digit [0-9]
-num {digit}+
-float_num {digit}+"."{digit}+
-delim [ \t\n]
-letter [A-Za-z]
-under [_]
+number {digit}+
+id [a-zA-Z_][a-zA-Z0-9_]*
 
 %%
-
-{delim} {}
-
-"int"    { return INT_TYPE; }
-"float"  { return FLOAT_TYPE; }
-
-"="      { return ASSIGN; }
-";"      { return SEMI; }
-"%"      { return MOD; }
-"!="     { return NEQ; }
-"?"      { return QUEST; }
-":"      { return COLON; }
-
-{float_num} { yylval = atof(yytext); return FLOAT_NUM; }
-{num}       { yylval = atoi(yytext); return INT_NUM; }
-
-({under}|{letter})({under}|{letter}|{digit})* { return ID; }
-
-
+[ \t\n]+             ; 
+"while"    { return WHILE; }
+"("        { return LPAREN; }
+")"        { return RPAREN; }
+"{"        { return LBRACE; }
+"}"        { return RBRACE; }
+{number}   { yylval = atoi(yytext); return NUM; }
+{id}       { return ID; }
+"="       { return ASSIGN; }
+"/"       { return DIV; }
+"=="       { return EQ; }
+";"        { return SEMI; }
+.          { return *yytext; }
 
 %%

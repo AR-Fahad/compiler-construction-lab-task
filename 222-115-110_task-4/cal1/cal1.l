@@ -1,19 +1,29 @@
 %option noyywrap
 
 %{
-    #include "cal1.tab.h"
+#include "cal1.tab.h"
+#include <stdlib.h>
 %}
 
-digit [0-9]
-number ({digit}+)
-delim [ \t\n]
-ws {delim}+
-alpha [A-Za-z]
-undr [_]
+digit   [0-9]
+number  {digit}+
+id      [a-zA-Z_][a-zA-Z0-9_]*
 
 %%
-{ws} {}
-{number} {yylval = atoi(yytext); return(NUM);}
-"+" {return(ADD);}
-"-" {return(SUB);}
+
+[ \t\n]+             ;                  
+"if"                 { return IF; }
+"else"               { return ELSE; }
+"("                  { return LPAREN; }
+")"                  { return RPAREN; }
+"{"                  { return LBRACE; }
+"}"                  { return RBRACE; }
+"="                 { return ASSIGN; }
+"=="                 { return EQ; }
+";"                  { return SEMI; }
+{id}                 { return ID; }
+{number}             { yylval = atoi(yytext); return NUM; }
+
+.                    { return *yytext; }       // Catch any other single characters
+
 %%

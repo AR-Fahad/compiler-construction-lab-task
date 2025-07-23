@@ -1,59 +1,34 @@
 %{
-#include<stdio.h>
+#include <stdio.h>
 void yyerror(char *s);
 int yylex();
 %}
 
-%token INT_TYPE FLOAT_TYPE INT_NUM FLOAT_NUM ASSIGN SEMI ID COMMA
-%token IF ELSE EQ LPAREN RPAREN LBRACE RBRACE
-
-%start stmts
-
-%left '+' '-' '*' '/' 
-%left EQ
-%nonassoc IFX ELSE
+%token IF ELSE FOR LPAREN RPAREN LBRACE RBRACE NUM ID EQ SEMI
+%start stmt
 
 %%
 
-stmts : stmts stmt | ;
+stmt
+    : FOR LPAREN expr SEMI expr SEMI expr RPAREN block
+    | IF LPAREN expr RPAREN block ELSE block
+    | IF LPAREN expr RPAREN block
+    ;
 
-stmt : dclr_stmt | ass_stmt | if_stmt ;
+expr: ID EQ NUM ;
 
-dclr_stmt : Type decl_list SEMI ;
+block: LBRACE stmt_list RBRACE ;
 
-decl_list : ID
-          | ID ASSIGN expr
-          | decl_list COMMA ID
-          | decl_list COMMA ID ASSIGN expr ;
-
-ass_stmt : ID ASSIGN expr SEMI ;
-
-if_stmt : IF LPAREN expr RPAREN LBRACE stmts RBRACE %prec IFX
-        | IF LPAREN expr RPAREN LBRACE stmts RBRACE ELSE LBRACE stmts RBRACE ;
-
-expr : expr '+' expr
-     | expr '-' expr
-     | expr '*' expr
-     | expr '/' expr
-     | expr EQ expr
-     | ID
-     | NUM
-     ;
-
-NUM : INT_NUM | FLOAT_NUM;
-
-Type : INT_TYPE | FLOAT_TYPE;
+stmt_list : expr SEMI ;
 
 %%
 
-
-void yyerror(char *s)
-{
-    fprintf(stderr, "error: %s", s);
+void yyerror(char *s) {
+    fprintf(stderr, "Error: %s\n", s);
 }
 
-int main()
-{
+int main() {
     yyparse();
     printf("Parsing Finished\n");
+    return 0;
 }

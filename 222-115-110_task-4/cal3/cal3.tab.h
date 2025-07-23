@@ -39,38 +39,25 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUM = 258,
-     ID = 259,
-     INT = 260,
-     FOR = 261,
-     ASSIGN = 262,
-     LT = 263,
-     PLUS = 264,
-     SEMI = 265,
-     LPAREN = 266,
-     RPAREN = 267,
-     LBRACE = 268,
-     RBRACE = 269
+     DO = 258,
+     WHILE = 259,
+     LPAREN = 260,
+     RPAREN = 261,
+     LBRACE = 262,
+     RBRACE = 263,
+     NUM = 264,
+     ID = 265,
+     LE = 266,
+     ADD = 267,
+     ASSIGN = 268,
+     SEMI = 269
    };
 #endif
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-{
-
-/* Line 1676 of yacc.c  */
-#line 18 "cal3.y"
-
-    int num;
-    char* id;
-
-
-
-/* Line 1676 of yacc.c  */
-#line 73 "cal3.tab.h"
-} YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

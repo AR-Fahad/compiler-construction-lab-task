@@ -39,9 +39,17 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUM = 258,
-     ADD = 259,
-     SUB = 260
+     IF = 258,
+     ELSE = 259,
+     LPAREN = 260,
+     RPAREN = 261,
+     LBRACE = 262,
+     RBRACE = 263,
+     NUM = 264,
+     ID = 265,
+     ASSIGN = 266,
+     EQ = 267,
+     SEMI = 268
    };
 #endif
 

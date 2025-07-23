@@ -1,28 +1,32 @@
 %{
-#include<stdio.h>
+#include <stdio.h>
 void yyerror(char *s);
 int yylex();
 %}
 
-%token NUM ADD SUB
-%start stmts
+%token IF ELSE LPAREN RPAREN LBRACE RBRACE NUM ID ASSIGN EQ SEMI
+%start stmt
 
 %%
 
-stmts: stmts stmt | ;
-stmt: stmt ADD term | stmt SUB term | term;
-term: NUM;
+stmt: IF LPAREN condition RPAREN block ELSE block
+    | IF LPAREN condition RPAREN block
+    ;
+
+condition: ID EQ NUM ;
+
+expr: ID ASSIGN NUM SEMI ;
+
+block: LBRACE expr RBRACE ;
 
 %%
 
-void yyerror(char *s)
-{
-    fprintf(stderr, "error: %s", s);
+void yyerror(char *s) {
+    fprintf(stderr, "Error: %s\n", s);
 }
 
-int main()
-{
+int main() {
     yyparse();
     printf("Parsing Finished\n");
+    return 0;
 }
-

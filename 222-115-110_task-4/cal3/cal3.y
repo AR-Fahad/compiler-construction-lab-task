@@ -1,73 +1,29 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+void yyerror(char *s);
 int yylex();
-void yyerror(const char *s);
-
-typedef struct {
-    char* id;
-    int num;
-} YYSTYPE;
-
-#define YYSTYPE_IS_DECLARED 1
-
 %}
 
-%union {
-    int num;
-    char* id;
-}
+%token DO WHILE LPAREN RPAREN LBRACE RBRACE NUM ID LE ADD ASSIGN SEMI
+%start stmt
 
-%token <num> NUM
-%token <id> ID
-%token INT FOR ASSIGN LT PLUS SEMI LPAREN RPAREN LBRACE RBRACE
+%%
+stmt : DO block WHILE LPAREN condition RPAREN SEMI ;
 
-%start program
+condition: ID LE NUM ;
+
+expr : ID ASSIGN ID ADD NUM SEMI ;
+
+block : LBRACE expr RBRACE ;
 
 %%
 
-program:
-    declaration loop
-    ;
-
-declaration:
-    INT ID SEMI
-    ;
-
-loop:
-    FOR LPAREN assignment condition SEMI update RPAREN LBRACE statement RBRACE
-    ;
-
-assignment:
-    ID ASSIGN expression SEMI
-    ;
-
-condition:
-    ID LT NUM
-    ;
-
-update:
-    ID ASSIGN ID PLUS NUM
-    ;
-
-statement:
-    ID ASSIGN ID SEMI
-    ;
-
-expression:
-    NUM
-    | ID
-    ;
-
-%%
-
-void yyerror(const char *s) {
-    fprintf(stderr, "Syntax error: %s\n", s);
+void yyerror(char *s) {
+    fprintf(stderr, "Error: %s\n", s);
 }
 
 int main() {
     yyparse();
+    printf("Parsing Finished\n");
     return 0;
 }

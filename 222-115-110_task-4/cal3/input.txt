@@ -1,4 +1,3 @@
-int i;
-for (i = 0; i < 5; i = i + 1) {
-    result = i;
-}
+do {
+    x = x + 1;
+} while(x <= 9);
